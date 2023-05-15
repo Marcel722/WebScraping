@@ -1,0 +1,10 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+link = "https://bulldogjob.pl/readme/najpopularniejsze-jezyki-programowania-2020"
+html = requests.get(link)
+s = BeautifulSoup(html.content, 'html.parser')
+jezyk = s.find_all('strong')
+df = pd.DataFrame(jezyk)
+print('Najpopularniejsze języki programowania w roku 2020 to: ',df)
